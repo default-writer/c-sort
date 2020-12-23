@@ -39,7 +39,9 @@ int main() {
     int n = length_of_main_array - 1;
     int i = 0;
 
-    sort(ptr_One, ptr_Two);
+    // float test_array[5] = { -1.0f, -1.0f, 5.0f, -1.0f, -1.0f};
+
+    sort(ptr_One, ptr_Two); 
 
     for (int i = 0; i < length_of_main_array; i++) {
         printf("\n%4f", main_array[i]);
@@ -50,18 +52,31 @@ int main() {
 
 void sort(float* ptr_One, float* ptr_Two)
 {
-    float* ptr_Tmp = ptr_One;
-    while (ptr_One != ptr_Two)
+    while (1)
     {
-        if (*ptr_One < *ptr_Two)
+        float* ptr_Tmp = ptr_One;
+        while (ptr_One < ptr_Two)
         {
-            swap(ptr_One, ptr_Two);
+            if (*ptr_One > 0)
+            {
+                ++ptr_One;
+                continue;
+            }
+            if (*ptr_Two < 0)
+            {
+                --ptr_Two;
+                continue;
+            }
+            if (*ptr_One < *ptr_Two)
+                swap(ptr_One, ptr_Two);
+            ++ptr_One;
         }
-        ++ptr_One;
-    }
-    if (ptr_Tmp < ptr_Two)
-    {
-        sort(ptr_Tmp, ptr_Two - 1);
+        if (ptr_Tmp < ptr_Two) {
+            --ptr_Two;
+            ptr_One = ptr_Tmp;
+            continue;
+        }
+        break;
     }
 }
 
