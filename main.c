@@ -3,7 +3,9 @@
 #include <stdlib.h>
 #define length_of_main_array 5
 int function_of_filling_array(int, float*);
+
 void sort(float* ptr_One, float* ptr_Two);
+void swap(float* ptr_One, float* ptr_Two);
 
 int main() {
     srand(time(NULL));
@@ -53,10 +55,7 @@ void sort(float* ptr_One, float* ptr_Two)
     {
         if (*ptr_One < *ptr_Two)
         {
-            float tmp = *ptr_One;
-            *ptr_One = *ptr_Two;
-            *ptr_Two = tmp;
-            printf("[debug] %4f <--> %4f\n", *ptr_One, *ptr_Two);
+            swap(ptr_One, ptr_Two);
         }
         ++ptr_One;
     }
@@ -66,6 +65,12 @@ void sort(float* ptr_One, float* ptr_Two)
     }
 }
 
+void swap(float* ptr_One, float* ptr_Two) {
+    float tmp = *ptr_One;
+    *ptr_One = *ptr_Two;
+    *ptr_Two = tmp;
+    printf("[debug] %4f <--> %4f\n", *ptr_One, *ptr_Two);
+}
 
 int function_of_filling_array(int length, float* mainArray) 
 {
