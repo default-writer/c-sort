@@ -56,6 +56,7 @@ void sort(float* ptr_One, float* ptr_Two)
             float tmp = *ptr_One;
             *ptr_One = *ptr_Two;
             *ptr_Two = tmp;
+            printf("[debug] %4f <--> %4f\n", *ptr_One, *ptr_Two);
         }
         ++ptr_One;
     }
